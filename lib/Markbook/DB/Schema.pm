@@ -1,16 +1,22 @@
 package Markbook::DB::Schema;
 use strict;
 use warnings;
-use utf8;
-
 use Teng::Schema::Declare;
-
-base_row_class 'Markbook::DB::Row';
-
+use Time::Piece;
 table {
-    name 'member';
+    name 'memo';
     pk 'id';
-    columns qw(id name);
-};
+    columns (
+        'id',
+        'title',
+        'body',
+        'created_on',
+        'updated_on',
+    );
+
+        inflate qr/.+_on/ => sub {
+            Time::Piece->new(+shift);
+        };
+    };
 
 1;

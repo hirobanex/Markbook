@@ -15,7 +15,6 @@ sub dispatch {
 __PACKAGE__->load_plugins(
     'Web::FillInFormLite',
     'Web::JSON',
-    '+Markbook::Web::Plugin::Session',
 );
 
 # setup view
