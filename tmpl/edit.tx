@@ -9,6 +9,7 @@
           <span class="label label-default">updated_at:<span id="updated_at"></span></span>
           <span class="label label-info" id="str_cnt">0</span>
         </p>
+        <h1 id="title_preview"></h1>
         <div id="preview"></div>
     </div>
     <div class="col-md-6">

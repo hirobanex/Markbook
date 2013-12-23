@@ -20,6 +20,7 @@ $(function () {
           },
           success: function (res) {
             preview.html(res.html);
+            $('#title_preview').text(res.title);
             $('#str_cnt').text(res.str_cnt);
             $('#created_at').text(res.created_at);
             $('#updated_at').text(res.updated_at);
