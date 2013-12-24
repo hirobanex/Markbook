@@ -58,27 +58,28 @@ post '/preview' => sub {
         updated_on => $now,
     };
 
-    my $row;
-    if ($id) {
-        $c->db->update('memo',$memo_data,{ id => $id });
-        
-        $row = $c->db->single('memo',{ id => $id });
-    }else{
-        $row = $c->db->single('memo',$memo_data) || do {
-            $memo_data->{created_on} = $now;
-
-            $row = $c->db->insert('memo',$memo_data);
+    my $row = ($id) 
+        ? do {
+            $c->db->update('memo',$memo_data,{ id => $id });
+            
+            $c->db->single('memo',{ id => $id });
         }
-    }
+        : do {
+            $c->db->single('memo',$memo_data) || do {
+                $memo_data->{created_on} = $now;
 
-    my $str_cnt = str_cnt($body);
+                $c->db->insert('memo',$memo_data);
+            }
+        }
+    ;
+
     (my $html = Text::MultiMarkdown::markdown($body)) =~ s/<pre>/<pre class\=\"prettyprint\">/;
 
     return $c->render_json(+{ 
         id         => $row->id,
         title      => $title,
         html       => $html, 
-        str_cnt    => $str_cnt,
+        str_cnt    => str_cnt($body),
         created_at => $row->created_on->datetime,
         updated_at => $row->updated_on->datetime,
     });
