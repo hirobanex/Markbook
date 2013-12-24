@@ -44,9 +44,11 @@ post '/preview' => sub {
         
         $row = $c->db->single('memo',{ id => $id });
     }else{
-        $memo_data->{created_on} = $now;
+        $row = $c->db->single('memo',$memo_data) || do {
+            $memo_data->{created_on} = $now;
 
-        $row = $c->db->insert('memo',$memo_data);
+            $row = $c->db->insert('memo',$memo_data);
+        }
     }
 
     my $str_cnt = str_cnt($body);
