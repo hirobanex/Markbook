@@ -40,10 +40,11 @@ $(function () {
         var body   = $('textarea').val();
         preview_post(title,body);
       });
-    if ($('#init').attr('value') == 0) {
-        var title   = $('#title').val();
-        var body   = $('textarea').val();
-        preview_post(title,body);
-        $('#init').attr('value',1);
-    }
+
+      if ($('#init').attr('value') == 0) {
+          var title   = $('#title').val();
+          var body   = $('textarea').val();
+          preview_post(title,body);
+          $('#init').attr('value',1);
+      }
 });

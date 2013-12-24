@@ -2,23 +2,31 @@
 
 : override content -> {
 
-<h1>memo一覧</h1>
-
-<hr />
-
-
 <div class="row">
-<ul>
+<ul class="list-group">
 : for $memos -> $row {
-    <li><a href="<: uri_for('/by_one_screen',{ id => $row.id }) :>"><: $row.title or $row.created_on.datetime :></a></li>
+  <li class="list-group-item col-md-8 col-md-offset-2 col-xs-12">
+    <h4 class="list=group-item-heading"><: $row.title or $row.created_on.datetime :></h4>
+    <small class=group-item-text">
+      <: $row.body | excerpt :>
+      <br />
+      <span class="label label-default">created:<: $row.created_on.datetime :></span>
+      <span class="label label-default">updated:<: $row.updated_on.datetime :></span>
+      <br />
+      <a href="<: uri_for('/view',{ id => $row.id }) :>" class="btn btn-info btn-xs" role="button">view</a>
+      <div class="btn-group">
+      <a href="<: uri_for('/edit',{ id => $row.id }) :>" class="btn btn-warning btn-xs" role="button">edit</a>
+      <a href="<: uri_for('/by_one_screen',{ id => $row.id }) :>" class="btn btn-warning btn-xs" role="button">one_screen</a>
+      </div>
+      <a href="<: uri_for('/by_one_screen',{ id => $row.id }) :>" class="btn btn-danger btn-xs" role="button">delete</a>
+    </small>
+  </li>
 : }
 </ul>
 </div>
 
-
 <hr>
 
 : include "include/pager.tx"
-
 
 : }

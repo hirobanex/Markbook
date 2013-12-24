@@ -1,5 +1,6 @@
 : if ($pager) {
     <div class="row">
+      <div class="col-md-12 col-md-offset-5">
         <ul class="pagination">
             <: if ($pager.previous_page) { :>
                 <li class="prev"><a href="<: uri_with({page => $pager.previous_page}) :>" rel="previous">&larr; Back</a><li>
@@ -22,5 +23,6 @@
                 <li class="next disabled"><a href="#">Next &rarr;</a><li>
             <: } :>
         </ul>
+      </div>
     </div>
 : }

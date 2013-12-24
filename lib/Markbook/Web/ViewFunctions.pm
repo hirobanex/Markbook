@@ -14,6 +14,12 @@ sub commify {
     return $_;
 }
 
+sub excerpt {
+    local $_  = shift;
+    $_ = substr($_,0,120);
+    return $_;
+}
+
 sub c { Markbook->context() }
 sub uri_with { Markbook->context()->req->uri_with(@_) }
 sub uri_for { Markbook->context()->uri_for(@_) }
