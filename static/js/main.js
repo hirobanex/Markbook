@@ -47,4 +47,13 @@ $(function () {
           preview_post(title,body);
           $('#init').attr('value',1);
       }
+
+      $('button.editable').click(function () {
+        var target = $('fieldset');
+        if (target.attr('disabled')) {
+          target.removeAttr('disabled');
+        }else{
+          target.attr('disabled',1);
+        }
+      });
 });
