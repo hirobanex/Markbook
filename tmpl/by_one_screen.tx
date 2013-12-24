@@ -1,0 +1,22 @@
+: cascade "include/layout.tx"
+
+: override content -> {
+
+<div class="row">
+    <div class="col-md-6">
+        <p>
+          <span class="label label-default">created_at:<span id="created_at"></span></span>
+          <span class="label label-default">updated_at:<span id="updated_at"></span></span>
+          <span class="label label-info" id="str_cnt">0</span>
+        </p>
+        <h1 id="title_preview"></h1>
+        <div id="preview"></div>
+    </div>
+    <div class="col-md-6">
+        <p style="text-align: center;"><input type="text" id="title" name="title" value="" class="form-control" placeholder="title" /></p>
+        <input type="hidden" id="id" name="id" value="" />
+        <textarea class="form-control" rows="23"></textarea>
+    </div>
+</div>
+
+: }

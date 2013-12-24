@@ -10,14 +10,28 @@ use Encode 'encode_utf8';
 get '/' => sub {
     my ($c) = @_;
 
-    return $c->render('index.tx',{ });
+    my $params = $c->req->parameters->mixed;
+
+    my $page = delete $params->{page} || 1;
+    my $rows = delete $params->{rows} || 100; 
+
+    my ($memos, $pager) = $c->db->search_with_pager('memo', +{} , {
+        page       => $page,
+        rows       => $rows,
+        order_by   => 'updated_on DESC',
+    });
+
+    return $c->render('index.tx',{
+        memos => $memos,
+        pager => $pager,
+    });
 };
 
 #paramaterを渡して既存の記事の編集ができるように
-get '/edit' => sub {
+get '/by_one_screen' => sub {
     my ($c) = @_;
 
-    return $c->render('edit.tx');
+    return $c->render('by_one_screen.tx');
 };
 
 #一番最初にデータがインサートされていないうちにまたインサートしてしまう問題
