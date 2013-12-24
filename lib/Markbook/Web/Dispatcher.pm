@@ -50,7 +50,7 @@ post '/preview' => sub {
     }
 
     my $str_cnt = str_cnt($body);
-    my $html = Text::MultiMarkdown::markdown($body);
+    (my $html = Text::MultiMarkdown::markdown($body)) =~ s/<pre>/<pre class\=\"prettyprint\">/;
 
     return $c->render_json(+{ 
         id         => $row->id,

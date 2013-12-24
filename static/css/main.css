@@ -14,3 +14,64 @@ footer {
 /* smart phones */
 @media screen and (max-device-width: 480px) {
 }
+
+/* preview */
+
+h1#title_preview {
+    font-size:20px;
+    border-bottom:black 2px double;
+    margin:0 0 10px 0;
+    padding:0 0 0 0;
+}
+div#preview {
+    font-size:12px;
+    margin: 5px 0 0 0 0;
+}
+#preview h1 {
+    font-size:20px;
+    font-size:0.9em;
+    margin:0 0 0 0;
+    padding:0 0 0 0;
+}
+#preview h2 {
+    font-size:15px;
+    border-left:black 8px solid;
+    border-bottom:black 1px solid;
+    margin:5px 0 5px 0px;
+    padding:0 0 0 5px;
+}
+#preview h3 {
+    font-size:15px;
+    border-left:black 8px solid;
+    margin:3px 0 3px 0px;
+    padding:0 0 0 5px;
+}
+#preview h4 {
+    font-size:12px;
+    font-weight:bold;
+    margin:1px 0 1px 0px;
+    padding:0 0 0 5px;
+}
+#preview table {
+    margin:10px 0 0 10px;
+}
+#preview table,th,tr,td {
+    border: 1px black solid;
+    border-collapse: collapse;
+}
+#preview blockquote {
+ padding :10px;
+ border: 1px;
+ border-style: dotted;
+}
+#preview cite {
+ display: block;
+ text-align:right;
+
+}
+#preview p {
+    font-size:12px;
+    letter-spacing: normal;
+    line-height: 1.7em;
+}
+
