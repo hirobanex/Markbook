@@ -6,7 +6,6 @@ use Amon2::Web::Dispatcher::RouterBoom;
 use Text::MultiMarkdown;
 use Encode 'encode_utf8';
 
-#記事一覧を表示する
 get '/' => sub {
     my ($c) = @_;
 
@@ -27,11 +26,18 @@ get '/' => sub {
     });
 };
 
-#paramaterを渡して既存の記事の編集ができるように
 get '/by_one_screen' => sub {
     my ($c) = @_;
 
-    return $c->render('by_one_screen.tx');
+    my $params = $c->req->parameters->mixed;
+
+    my $id = delete $params->{id}
+        or return $c->render('by_one_screen.tx');
+
+    my $row = $c->db->single('memo',{ id => $id })
+        or return $c->res_404();
+
+    return $c->render('by_one_screen.tx',{ memo => $row });
 };
 
 #一番最初にデータがインサートされていないうちにまたインサートしてしまう問題

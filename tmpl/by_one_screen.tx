@@ -13,9 +13,10 @@
         <div id="preview"></div>
     </div>
     <div class="col-md-6">
-        <p style="text-align: center;"><input type="text" id="title" name="title" value="" class="form-control" placeholder="title" /></p>
-        <input type="hidden" id="id" name="id" value="" />
-        <textarea class="form-control" rows="23"></textarea>
+        <p style="text-align: center;"><input type="text" id="title" name="title" value="<: $memo.title :>" class="form-control" placeholder="title" /></p>
+        <input type="hidden" id="id" name="id" value="<: $memo.id :>" />
+        <input type="hidden" id="init" name="init" value="0" />
+        <textarea class="form-control" rows="23"><: $memo.body :></textarea>
     </div>
 </div>
 
