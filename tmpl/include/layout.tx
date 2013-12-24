@@ -36,8 +36,8 @@
         </div><!-- /.navbar-inner -->
         <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="/edit">新しく書く</a></li>
-                <li><a href="/by_one_screen">1画面で書く</a></li>
+                <!-- <li><a href="/edit">Edit</a></li> -->
+                <li><a href="/by_one_screen">OneScreen</a></li>
             </ul>
         </div>
     </nav><!-- /.navbar -->

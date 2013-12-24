@@ -16,6 +16,7 @@ use Test::More 0.98;
 our @EXPORT = qw(
     slurp
     c
+    create_memo
 );
 
 {
@@ -49,5 +50,14 @@ sub c { $c ||= Markbook->bootstrap }
     system("sqlite3 db/test.db < sql/sqlite.sql");
 }
 
+sub create_memo {
+    my $now = time();
+    c()->db->insert('memo',{
+        title      => 'タイトルだよ',
+        body       => '本文だよ。[yahoo](http://yahoo.co.jp)',
+        created_on => $now,
+        updated_on => $now,
+    });
+}
 
 1;

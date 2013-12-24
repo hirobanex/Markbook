@@ -10,6 +10,8 @@ use JSON::XS;
 use Test::Deep;
 use Test::Deep::Matcher;
 
+TODO: {
+local $TODO = '未実装';
 my $app = Plack::Util::load_psgi 'script/markbook-server';
 
 my $row_memo = create_memo();
@@ -37,4 +39,5 @@ test_psgi
 
     };
 
+}
 done_testing;

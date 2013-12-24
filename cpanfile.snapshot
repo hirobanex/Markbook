@@ -376,6 +376,22 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.42
       Test::More 0.96
       perl 5.008001
+  Data-Util-0.62
+    pathname: G/GF/GFUJI/Data-Util-0.62.tar.gz
+    provides:
+      Data::Util 0.62
+      Data::Util::Error undef
+      Data::Util::PurePerl undef
+    requirements:
+      Devel::PPPort 3.19
+      ExtUtils::MakeMaker 6.59
+      ExtUtils::ParseXS 2.21
+      Hash::Util::FieldHash::Compat 0
+      Scope::Guard 0
+      Test::Exception 0.27
+      Test::More 0.62
+      XSLoader 0.02
+      perl 5.008001
   Devel-CheckCompiler-0.05
     pathname: S/SY/SYOHEX/Devel-CheckCompiler-0.05.tar.gz
     provides:
@@ -827,6 +843,16 @@ DISTRIBUTIONS
       Hash::MultiValue 0.15
     requirements:
       ExtUtils::MakeMaker 6.30
+  Hash-Util-FieldHash-Compat-0.03
+    pathname: N/NU/NUFFIN/Hash-Util-FieldHash-Compat-0.03.tar.gz
+    provides:
+      Hash::Util::FieldHash::Compat 0.03
+      Hash::Util::FieldHash::Compat::Destroyer undef
+      Hash::Util::FieldHash::Compat::Tie::FieldHash undef
+      Hash::Util::FieldHash::Compat::Tie::IdHash undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::use::ok 0
   IO-HTML-1.00
     pathname: C/CJ/CJM/IO-HTML-1.00.tar.gz
     provides:
@@ -848,6 +874,14 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       Test::More 0
+  JSON-XS-3.01
+    pathname: M/ML/MLEHMANN/JSON-XS-3.01.tar.gz
+    provides:
+      JSON::XS 3.01
+    requirements:
+      ExtUtils::MakeMaker 0
+      Types::Serialiser 0
+      common::sense 0
   LWP-MediaTypes-6.02
     pathname: G/GA/GAAS/LWP-MediaTypes-6.02.tar.gz
     provides:
@@ -1418,6 +1452,81 @@ DISTRIBUTIONS
       Test::Requires 0
       Test::SharedFork 0.15
       parent 0
+  Test-Deep-0.112
+    pathname: R/RJ/RJBS/Test-Deep-0.112.tar.gz
+    provides:
+      Test::Deep 0.112
+      Test::Deep::All undef
+      Test::Deep::Any undef
+      Test::Deep::Array undef
+      Test::Deep::ArrayEach undef
+      Test::Deep::ArrayElementsOnly undef
+      Test::Deep::ArrayLength undef
+      Test::Deep::ArrayLengthOnly undef
+      Test::Deep::Blessed undef
+      Test::Deep::Boolean undef
+      Test::Deep::Cache undef
+      Test::Deep::Cache::Simple undef
+      Test::Deep::Class undef
+      Test::Deep::Cmp undef
+      Test::Deep::Code undef
+      Test::Deep::Hash undef
+      Test::Deep::HashEach undef
+      Test::Deep::HashElements undef
+      Test::Deep::HashKeys undef
+      Test::Deep::HashKeysOnly undef
+      Test::Deep::Ignore undef
+      Test::Deep::Isa undef
+      Test::Deep::ListMethods undef
+      Test::Deep::MM undef
+      Test::Deep::Methods undef
+      Test::Deep::NoTest undef
+      Test::Deep::Number undef
+      Test::Deep::Obj undef
+      Test::Deep::Ref undef
+      Test::Deep::RefType undef
+      Test::Deep::Regexp undef
+      Test::Deep::RegexpMatches undef
+      Test::Deep::RegexpRef undef
+      Test::Deep::RegexpRefOnly undef
+      Test::Deep::RegexpVersion undef
+      Test::Deep::ScalarRef undef
+      Test::Deep::ScalarRefOnly undef
+      Test::Deep::Set undef
+      Test::Deep::Shallow undef
+      Test::Deep::Stack undef
+      Test::Deep::String undef
+      Test::Deep::SubHash undef
+      Test::Deep::SubHashElements undef
+      Test::Deep::SubHashKeys undef
+      Test::Deep::SubHashKeysOnly undef
+      Test::Deep::SuperHash undef
+      Test::Deep::SuperHashElements undef
+      Test::Deep::SuperHashKeys undef
+      Test::Deep::SuperHashKeysOnly undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      List::Util 1.09
+      Scalar::Util 1.09
+      Test::More 0
+      Test::NoWarnings 0.02
+      Test::Tester 0.04
+  Test-Deep-Matcher-0.01
+    pathname: M/MA/MASAKI/Test-Deep-Matcher-0.01.tar.gz
+    provides:
+      Test::Deep::Matcher 0.01
+      Test::Deep::Matcher::DataUtil undef
+    requirements:
+      Data::Util 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.59
+      Symbol 0
+      Test::Deep 0
+      Test::More 0.98
+      Test::Tester 0
+      Test::UseAllModules 0
+      parent 0
+      perl 5.008001
   Test-Differences-0.61
     pathname: O/OV/OVID/Test-Differences-0.61.tar.gz
     provides:
@@ -1520,6 +1629,17 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 6.59
       Test::More 0.96
       perl 5.006001
+  Test-NoWarnings-1.04
+    pathname: A/AD/ADAMK/Test-NoWarnings-1.04.tar.gz
+    provides:
+      Test::NoWarnings 1.04
+      Test::NoWarnings::Warning 1.04
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::Builder 0.86
+      Test::More 0.47
+      Test::Tester 0.107
+      perl 5.006
   Test-Requires-0.07
     pathname: T/TO/TOKUHIROM/Test-Requires-0.07.tar.gz
     provides:
@@ -1562,6 +1682,26 @@ DISTRIBUTIONS
       Test::SharedFork 0.19
       Time::HiRes 0
       perl 5.008001
+  Test-Tester-0.109
+    pathname: F/FD/FDALY/Test-Tester-0.109.tar.gz
+    provides:
+      Test::Tester 0.109
+      Test::Tester::Capture undef
+      Test::Tester::CaptureRunner undef
+      Test::Tester::Delegate undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::Builder 0
+  Test-UseAllModules-0.14
+    pathname: I/IS/ISHIGAKI/Test-UseAllModules-0.14.tar.gz
+    provides:
+      Test::UseAllModules 0.14
+    requirements:
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      ExtUtils::Manifest 0
+      Test::Builder 0.30
+      Test::More 0.60
   Test-WWW-Mechanize-1.44
     pathname: P/PE/PETDANCE/Test-WWW-Mechanize-1.44.tar.gz
     provides:
@@ -1605,6 +1745,14 @@ DISTRIBUTIONS
       Test::More 0
       Tree::DAG_Node 1.02
       perl 5.006
+  Test-use-ok-0.11
+    pathname: A/AU/AUDREYT/Test-use-ok-0.11.tar.gz
+    provides:
+      Test::use::ok 0.11
+      ok 0.11
+    requirements:
+      ExtUtils::MakeMaker 6.36
+      perl 5.005
   Text-Diff-1.41
     pathname: O/OV/OVID/Text-Diff-1.41.tar.gz
     provides:
@@ -1707,6 +1855,16 @@ DISTRIBUTIONS
       constant 0
       strict 0
       warnings 0
+  Types-Serialiser-1.0
+    pathname: M/ML/MLEHMANN/Types-Serialiser-1.0.tar.gz
+    provides:
+      JSON::PP::Boolean 1.0
+      Types::Serialiser 1.0
+      Types::Serialiser::BooleanBase 1.0
+      Types::Serialiser::Error 1.0
+    requirements:
+      ExtUtils::MakeMaker 0
+      common::sense 0
   URI-1.60
     pathname: G/GA/GAAS/URI-1.60.tar.gz
     provides:
@@ -1811,6 +1969,12 @@ DISTRIBUTIONS
       Fcntl 0
       URI 1.10
       perl 5.008001
+  common-sense-3.72
+    pathname: M/ML/MLEHMANN/common-sense-3.72.tar.gz
+    provides:
+      common::sense 3.72
+    requirements:
+      ExtUtils::MakeMaker 0
   libwww-perl-6.05
     pathname: G/GA/GAAS/libwww-perl-6.05.tar.gz
     provides:
