@@ -23,7 +23,7 @@ my $app = builder {
     Markbook::Web->to_app();
 };
 unless (caller) {
-    my $port        = 5000;
+    my $port        = 8989;
     my $host        = '127.0.0.1';
     my $max_workers = 4;
 
@@ -56,7 +56,7 @@ unless (caller) {
 
     print "Markbook: http://${host}:${port}/\n";
 
-    my $loader = Plack::Loader->load('Starlet',
+    my $loader = Plack::Loader->load('Twiggy',
         port        => $port,
         host        => $host,
         max_workers => $max_workers,
