@@ -5,7 +5,7 @@
 <div class="row">
 <ul class="list-group">
 : for $memos -> $row {
-  <li class="list-group-item col-md-8 col-md-offset-2 col-xs-12">
+  <li class="list-group-item col-md-8 col-md-offset-2 col-xs-12" id="id-<: $row.id :>">
     <h4 class="list=group-item-heading"><: $row.title or $row.created_on.datetime :></h4>
     <small class=group-item-text">
       <: $row.body | excerpt :>
@@ -18,7 +18,25 @@
       <!-- <a href="<: uri_for('/edit',{ id => $row.id }) :>" class="btn btn-warning btn-xs" role="button">edit</a> -->
       <a href="<: uri_for('/by_one_screen',{ id => $row.id }) :>" class="btn btn-warning btn-xs" role="button">one_screen</a>
       </div>
-      <!-- <a href="<: uri_for('/by_one_screen',{ id => $row.id }) :>" class="btn btn-danger btn-xs" role="button">delete</a> -->
+      <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete-modal-<: $row.id :>">delete</button>
+        <!-- Modal -->
+        <div class="modal fade" id="delete-modal-<: $row.id :>" tabindex="-1" role="dialog" aria-labelledby="resignModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">memoの削除</h4>
+            </div>
+            <div class="modal-body">
+                <p>ホントに削除させますか？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                <button type="button" data-id='<: $row.id :>' data-url="/delete" class="btn btn-danger delete" data-loading-text="Loading" data-fail-text="失敗">実行</button>
+            </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
     </small>
   </li>
 : }

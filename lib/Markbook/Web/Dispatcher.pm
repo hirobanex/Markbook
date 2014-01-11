@@ -85,6 +85,18 @@ post '/preview' => sub {
     });
 };
 
+post '/delete' => sub {
+    my ($c) = @_;
+
+    my $id = $c->req->param('id')
+        or return $c->render_json(+{ alert => +[+{message => 'idが見つかりません',       }] });
+
+    $c->db->delete('memo',{ id => $id })
+        or return $c->render_json(+{ alert => +[+{message => '削除対象のIDがありません', }] });
+
+    return $c->render_json(+{});
+};
+
 sub str_cnt {
     my ($body) = @_;
 

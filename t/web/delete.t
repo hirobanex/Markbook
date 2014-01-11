@@ -10,11 +10,7 @@ use JSON::XS;
 use Test::Deep;
 use Test::Deep::Matcher;
 
-TODO: {
-local $TODO = '未実装';
 my $app = Plack::Util::load_psgi 'script/markbook-server';
-
-my $row_memo = create_memo();
 
 test_psgi
     app => $app,
@@ -22,22 +18,59 @@ test_psgi
         my $cb = shift;
 
         subtest 'delete memo' => sub {
-            my %post_data = (
-                id => $row_memo->id,
-            );
+            subtest 'success case' => sub {
+                my $row_memo = create_memo();
 
-            my $req = POST('http://localhost/delete',
-                Content_Type => 'form-data',
-                Content      => +[%post_data],
-            );
+                my %post_data = (
+                    id => $row_memo->id,
+                );
 
-            my $res = $cb->($req);
+                my $req = POST('http://localhost/delete',
+                    Content_Type => 'form-data',
+                    Content      => +[%post_data],
+                );
 
-            is($res->code, 200, '200 ok');
-            is($res->content, '{}', 'location url exsist');
+                my $res = $cb->($req);
+
+                is($res->code, 200, '200 ok');
+                is($res->content, '{}', 'no error message');
+                ok(!c->db->single('memo',{ id => $row_memo->id}), 'there is no memo-data');
+            };
+
+            subtest 'fail case - no set id' => sub {
+                my $row_memo = create_memo();
+
+                my %post_data = ();
+
+                my $req = POST('http://localhost/delete',
+                    Content_Type => 'form-data',
+                    Content      => +[%post_data],
+                );
+
+                my $res = $cb->($req);
+
+                is($res->code, 200, '200 ok');
+                cmp_deeply(decode_json($res->content), +{ alert => +[+{message => 'idが見つかりません',       }]}, 'error message');
+                ok(c->db->single('memo',{ id => $row_memo->id}), 'there is memo-data');
+            };
+
+            subtest 'fail case - no set id' => sub {
+                my $row_memo = create_memo();
+
+                my %post_data = ( id => 'a' );
+
+                my $req = POST('http://localhost/delete',
+                    Content_Type => 'form-data',
+                    Content      => +[%post_data],
+                );
+
+                my $res = $cb->($req);
+
+                is($res->code, 200, '200 ok');
+                is_deeply(decode_json($res->content), +{ alert => +[+{message => '削除対象のIDがありません', }]}, 'error message');
+                ok(c->db->single('memo',{ id => $row_memo->id}), 'there is memo-data');
+            };
         };
-
     };
 
-}
 done_testing;
