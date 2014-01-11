@@ -15,6 +15,7 @@ sub dispatch {
 __PACKAGE__->load_plugins(
     'Web::FillInFormLite',
     'Web::JSON',
+    'Web::WebSocket',
 );
 
 # setup view

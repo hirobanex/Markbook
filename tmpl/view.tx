@@ -1,0 +1,15 @@
+: cascade "include/layout.tx"
+
+: override content -> {
+<div id="websocket-info"></div>
+<div class="row">
+  <p>
+    <span class="label label-default">created_at:<span id="created_at"><: $memo.created_on.datetime :></span></span>
+    <span class="label label-default">updated_at:<span id="updated_at"><: $memo.updated_on.datetime :></span></span>
+    <span class="label label-info" id="str_cnt"><: $memo.body_cnt or 0 :></span>
+  </p>
+  <h1 id="title_preview"><: $memo.title :></h1>
+  <div id="preview"><: $memo.body_to_html | mark_raw :></div>
+</div>
+
+: }

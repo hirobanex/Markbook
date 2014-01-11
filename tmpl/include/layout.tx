@@ -23,7 +23,7 @@
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 </head>
-<body>
+<body data-host_port="<: c().req.uri.host_port :>">
     <nav class="navbar navbar-inverse" role="navigation">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -36,7 +36,7 @@
         </div><!-- /.navbar-inner -->
         <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <!-- <li><a href="/edit">Edit</a></li> -->
+                <li><a href="/edit">Edit</a></li>
                 <li><a href="/by_one_screen">OneScreen</a></li>
             </ul>
         </div>

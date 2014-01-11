@@ -80,6 +80,53 @@ DISTRIBUTIONS
       URI::QueryParam 0
       parent 0.223
       perl 5.008001
+  AnyEvent-7.07
+    pathname: M/ML/MLEHMANN/AnyEvent-7.07.tar.gz
+    provides:
+      AE undef
+      AE::Log::COLLECT undef
+      AE::Log::FILTER undef
+      AE::Log::LOG undef
+      AnyEvent 7.07
+      AnyEvent::Base 7.07
+      AnyEvent::CondVar 7.07
+      AnyEvent::CondVar::Base 7.07
+      AnyEvent::DNS undef
+      AnyEvent::Debug undef
+      AnyEvent::Debug::Backtrace undef
+      AnyEvent::Debug::Wrap undef
+      AnyEvent::Debug::Wrapped undef
+      AnyEvent::Debug::shell undef
+      AnyEvent::Handle undef
+      AnyEvent::IO undef
+      AnyEvent::IO::IOAIO undef
+      AnyEvent::IO::Perl undef
+      AnyEvent::Impl::Cocoa undef
+      AnyEvent::Impl::EV undef
+      AnyEvent::Impl::Event undef
+      AnyEvent::Impl::EventLib undef
+      AnyEvent::Impl::FLTK undef
+      AnyEvent::Impl::Glib undef
+      AnyEvent::Impl::IOAsync undef
+      AnyEvent::Impl::Irssi undef
+      AnyEvent::Impl::POE undef
+      AnyEvent::Impl::Perl undef
+      AnyEvent::Impl::Qt undef
+      AnyEvent::Impl::Qt::Io undef
+      AnyEvent::Impl::Qt::Timer undef
+      AnyEvent::Impl::Tk undef
+      AnyEvent::Log undef
+      AnyEvent::Log::COLLECT undef
+      AnyEvent::Log::Ctx undef
+      AnyEvent::Log::FILTER undef
+      AnyEvent::Log::LOG undef
+      AnyEvent::Loop undef
+      AnyEvent::Socket undef
+      AnyEvent::Strict undef
+      AnyEvent::TLS undef
+      AnyEvent::Util undef
+    requirements:
+      ExtUtils::MakeMaker 0
   Apache-LogFormat-Compiler-0.22
     pathname: K/KA/KAZEBURO/Apache-LogFormat-Compiler-0.22.tar.gz
     provides:
@@ -1143,6 +1190,13 @@ DISTRIBUTIONS
       XSLoader 0
       strict 0
       warnings 0
+  PadWalker-1.98
+    pathname: R/RO/ROBIN/PadWalker-1.98.tar.gz
+    provides:
+      PadWalker 1.98
+    requirements:
+      ExtUtils::MakeMaker 0
+      perl 5.008001
   Parallel-Prefork-0.14
     pathname: K/KA/KAZUHO/Parallel-Prefork-0.14.tar.gz
     provides:
@@ -1356,6 +1410,21 @@ DISTRIBUTIONS
       Scope::Guard 0
       Test::TCP 2.00
       perl 5.008
+  Smart-Args-0.12
+    pathname: T/TO/TOKUHIROM/Smart-Args-0.12.tar.gz
+    provides:
+      Smart::Args 0.12
+    requirements:
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      Exporter 5.63
+      ExtUtils::CBuilder 0
+      Module::Build 0.38
+      Mouse 0.92
+      Mouse::Util::TypeConstraints 0
+      PadWalker 1.92
+      Scalar::Util 1.21
+      perl 5.008001
   Starlet-0.21
     pathname: K/KA/KAZUHO/Starlet-0.21.tar.gz
     provides:
@@ -1855,6 +1924,21 @@ DISTRIBUTIONS
       constant 0
       strict 0
       warnings 0
+  Twiggy-0.1024
+    pathname: M/MI/MIYAGAWA/Twiggy-0.1024.tar.gz
+    provides:
+      AnyEvent::Server::PSGI undef
+      Plack::Handler::Twiggy undef
+      Twiggy 0.1024
+      Twiggy::Server undef
+      Twiggy::Server::SS undef
+      Twiggy::Writer undef
+    requirements:
+      AnyEvent 0
+      ExtUtils::MakeMaker 6.30
+      HTTP::Status 0
+      Plack 0.99
+      Try::Tiny 0
   Types-Serialiser-1.0
     pathname: M/ML/MLEHMANN/Types-Serialiser-1.0.tar.gz
     provides:

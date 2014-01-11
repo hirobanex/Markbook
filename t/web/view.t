@@ -6,9 +6,6 @@ use Plack::Test;
 use Plack::Util;
 use Test::More;
 
-TODO: {
-local $TODO = '未実装';
-
 my $app = Plack::Util::load_psgi 'script/markbook-server';
 test_psgi
     app => $app,
@@ -22,5 +19,4 @@ test_psgi
         };
     };
 
-}
 done_testing;

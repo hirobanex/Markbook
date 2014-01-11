@@ -3,8 +3,8 @@ use strict;
 use warnings;
 use utf8;
 use Amon2::Web::Dispatcher::RouterBoom;
-use Text::MultiMarkdown;
-use Encode 'encode_utf8';
+use JSON::XS;
+use Encode;
 
 get '/' => sub {
     my ($c) = @_;
@@ -50,39 +50,13 @@ post '/preview' => sub {
 
     (!$title and !$body) and return $c->render_json(+{});
 
-    my $now = time();
-
-    my $memo_data = +{
+    my $res = $c->db->insert_or_update_and_fetch_res(
+        id         => $id,
         title      => $title,
         body       => $body,
-        updated_on => $now,
-    };
+    );
 
-    my $row = ($id) 
-        ? do {
-            $c->db->update('memo',$memo_data,{ id => $id });
-            
-            $c->db->single('memo',{ id => $id });
-        }
-        : do {
-            $c->db->single('memo',$memo_data) || do {
-                $memo_data->{created_on} = $now;
-
-                $c->db->insert('memo',$memo_data);
-            }
-        }
-    ;
-
-    (my $html = Text::MultiMarkdown::markdown($body)) =~ s/<pre>/<pre class\=\"prettyprint\">/;
-
-    return $c->render_json(+{ 
-        id         => $row->id,
-        title      => $title,
-        html       => $html, 
-        str_cnt    => str_cnt($body),
-        created_at => $row->created_on->datetime,
-        updated_at => $row->updated_on->datetime,
-    });
+    return $c->render_json($res);
 };
 
 post '/delete' => sub {
@@ -97,12 +71,72 @@ post '/delete' => sub {
     return $c->render_json(+{});
 };
 
-sub str_cnt {
-    my ($body) = @_;
+get '/edit' => sub {
+    my ($c) = @_;
+    
+    my $id = $c->req->param('id')
+        or return $c->render('edit.tx');
 
-    $body =~ s/(\n|\r)//gs; 
+    my $row = $c->db->single('memo',{ id => $id })
+        or return $c->res_404();
 
-    return length($body);
-}
+    return $c->render('edit.tx',{ memo => $row });
+};
+
+get '/view' => sub {
+    my ($c) = @_;
+
+    my $id = $c->req->param('id')
+        or return $c->render('view.tx');
+
+    my $row = $c->db->single('memo',{ id => $id })
+        or return $c->res_404();
+
+    return $c->render('view.tx',{ memo => $row });
+};
+
+my $clients = {};
+use Digest::SHA1;
+any '/preview_by_websocket' => sub {
+    my ($c) = @_;
+    my $id = Digest::SHA1::sha1_hex(rand() . $$ . {} . time);
+
+    $c->websocket(sub {
+        my $ws = shift;
+        $clients->{$id} = $ws;
+
+        $ws->on_receive_message(sub {
+            my ($c, $json) = @_;
+
+            $json =~ /\{/ or return; 
+           
+             my $data = JSON::XS->new->decode($json);
+
+            my $id      = $data->{id}    || '';
+            my $title   = $data->{title} || '';
+            my $body    = $data->{body}  || '';
+
+            (!$title and !$body) and return;
+
+            my $res = $c->db->insert_or_update_and_fetch_res(
+                id         => $id,
+                title      => $title,
+                body       => $body,
+            );
+
+            for (keys %$clients) {
+                $clients->{$_}->send_message(encode_json($res));
+            }
+        });
+        $ws->on_eof(sub {
+            my ($c) = @_;
+            delete $clients->{$id};
+        });
+        $ws->on_error(sub {
+            my ($c) = @_;
+            delete $clients->{$id};
+        });
+    });
+};
 
 1;
