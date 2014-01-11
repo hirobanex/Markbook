@@ -3,7 +3,7 @@ if (typeof(window.console) == "undefined") { console = {}; console.log = console
 // thanks for http://d.hatena.ne.jp/sugyan/20110720/1311146296
 $(function () {
   var preview = $('#preview');
-  if (preview.is()) {
+  if (location.pathname == '/by_one_screen') {
     preview.css({
         height: $(window).height() - preview.offset().top - 5,
         overflow: 'auto'
