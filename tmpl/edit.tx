@@ -3,18 +3,21 @@
 : override content -> {
 
 <div class="row">
-  <span id="websocket-info"></span>
-
   <button class="btn btn-info btn-xs editable" onclick="window.open('<: uri_for('/view') :>');">view</button>
+  <span id="websocket-info-label" class="label"></span>
   : if ($memo.body) {
   <button class="btn btn-warning btn-xs editable">editable</button>
   : }
 
   <fieldset<: if($memo.body){ :> disabled<: } :>>
-    <p style="text-align: center;"><input type="text" id="title" name="title" value="<: $memo.title :>" class="form-control" placeholder="title" /></p>
+    <div class="form-group"> 
+      <input type="text" id="title" name="title" value="<: $memo.title :>" class="form-control" placeholder="title" />
+    </div>
     <input type="hidden" id="id" name="id" value="<: $memo.id :>" />
     <input type="hidden" id="init" name="init" value="0" />
-    <textarea class="form-control" rows="30"><: $memo.body :></textarea>
+    <div class="form-group">
+      <textarea class="form-control" rows="30"><: $memo.body :></textarea>
+    </div>
   </fieldset> 
 </div>
 

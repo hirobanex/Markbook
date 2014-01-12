@@ -109,7 +109,6 @@ $(function () {
   }
 
   function log(msg) {
-      $('#websocket-info').text(msg);
   }
 
   function websocket_send(title,body) {
@@ -126,10 +125,10 @@ $(function () {
       var hostport = $(document.body).data('host_port');
       var ws = new WebSocket('ws://' + hostport + '/preview_by_websocket');
       ws.onopen = function () {
-          log('connected');
+        $('#websocket-info-label').removeClass('label-danger').addClass('label-success').text('connected');
       };
       ws.onclose = function (ev) {
-          log('closed');
+        $('#websocket-info-label').removeClass('label-danger').addClass('label-danger').text('closed');
       };
       ws.onmessage = function (ev) {
           var res = JSON.parse(ev.data);
