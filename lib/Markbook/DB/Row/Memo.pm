@@ -16,7 +16,7 @@ sub body_cnt {
 sub body_to_html {
     my ($self) = @_;
 
-    (my $html = Text::MultiMarkdown::markdown($self->body)) =~ s/<pre>/<pre class\=\"prettyprint\">/;
+    (my $html = Text::MultiMarkdown::markdown($self->body)) =~ s/<pre>/<pre class\=\"prettyprint\">/g;
 
     return $html;
 }
