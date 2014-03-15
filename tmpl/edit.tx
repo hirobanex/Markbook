@@ -3,7 +3,7 @@
 : override content -> {
 
 <div class="row">
-  <button class="btn btn-info btn-xs editable" onclick="window.open('<: uri_for('/view') :>');">view</button>
+  <button onClick="javascript:w=window.open('<: uri_for('/view',{ id => $memo.id }) :>','','scrollbars=yes,Width=1200,Height=700');w.focus();" class="btn btn-info btn-xs editable">view</button>
   <span id="websocket-info-label" class="label"></span>
   : if ($memo.body) {
   <button class="btn btn-warning btn-xs editable">editable</button>

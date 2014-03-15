@@ -13,7 +13,7 @@
       <span class="label label-default">created:<: $row.created_on.datetime :></span>
       <span class="label label-default">updated:<: $row.updated_on.datetime :></span>
       <br />
-      <a href="<: uri_for('/view',{ id => $row.id }) :>" class="btn btn-info btn-xs" role="button">view</a>
+      <a href="javascript:w=window.open('<: uri_for('/view',{ id => $row.id }) :>','','scrollbars=yes,Width=1200,Height=700');w.focus();" class="btn btn-info btn-xs" role="button">view</a>
       <div class="btn-group">
       <a href="<: uri_for('/edit',{ id => $row.id }) :>" class="btn btn-warning btn-xs" role="button">edit</a>
       <a href="<: uri_for('/by_one_screen',{ id => $row.id }) :>" class="btn btn-warning btn-xs" role="button">one_screen</a>
