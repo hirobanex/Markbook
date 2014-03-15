@@ -1,0 +1,16 @@
+: cascade "include/layout.tx"
+
+: override content -> {
+
+<div class="row">
+  <fieldset>
+    <div class="form-group"> 
+      <input type="text" id="title" name="title" value="<h1><: $memo.title :></h1>" class="form-control" placeholder="title" />
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" rows="30"><: $memo.body_to_html :></textarea>
+    </div>
+  </fieldset> 
+</div>
+
+: }

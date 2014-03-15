@@ -95,6 +95,18 @@ get '/view' => sub {
     return $c->render('view.tx',{ memo => $row });
 };
 
+get '/to_html' => sub {
+    my ($c) = @_;
+
+    my $id = $c->req->param('id')
+        or return $c->res_404();
+
+    my $row = $c->db->single('memo',{ id => $id })
+        or return $c->res_404();
+
+    return $c->render('to_html.tx',{ memo => $row });
+};
+
 my $clients = {};
 use Digest::SHA1;
 any '/preview_by_websocket' => sub {
