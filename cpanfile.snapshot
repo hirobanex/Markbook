@@ -663,6 +663,21 @@ DISTRIBUTIONS
       parent 0.221
       strict 0
       vars 0
+  File-pushd-1.006
+    pathname: D/DA/DAGOLDEN/File-pushd-1.006.tar.gz
+    provides:
+      File::pushd 1.006
+    requirements:
+      Carp 0
+      Cwd 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.17
+      File::Path 0
+      File::Spec 0
+      File::Temp 0
+      overload 0
+      strict 0
+      warnings 0
   Filesys-Notify-Simple-0.12
     pathname: M/MI/MIYAGAWA/Filesys-Notify-Simple-0.12.tar.gz
     provides:
@@ -1355,6 +1370,32 @@ DISTRIBUTIONS
       Proc::Wait3 0.04
     requirements:
       ExtUtils::MakeMaker 0
+  Protocol-WebSocket-0.17
+    pathname: V/VT/VTI/Protocol-WebSocket-0.17.tar.gz
+    provides:
+      Protocol::WebSocket 0.17
+      Protocol::WebSocket::Client undef
+      Protocol::WebSocket::Cookie undef
+      Protocol::WebSocket::Cookie::Request undef
+      Protocol::WebSocket::Cookie::Response undef
+      Protocol::WebSocket::Frame undef
+      Protocol::WebSocket::Handshake undef
+      Protocol::WebSocket::Handshake::Client undef
+      Protocol::WebSocket::Handshake::Server undef
+      Protocol::WebSocket::Message undef
+      Protocol::WebSocket::Request undef
+      Protocol::WebSocket::Response undef
+      Protocol::WebSocket::Stateful undef
+      Protocol::WebSocket::URL undef
+    requirements:
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      Carp 0
+      Digest::MD5 0
+      Digest::SHA1 0
+      ExtUtils::CBuilder 0
+      Module::Build 0.38
+      Scalar::Util 0
   Router-Boom-1.00
     pathname: T/TO/TOKUHIROM/Router-Boom-1.00.tar.gz
     provides:
@@ -1847,6 +1888,20 @@ DISTRIBUTIONS
       Test::Exception 0
       Test::More 0.42
       Text::Balanced 0
+  Text-Markdown-Hoedown-1.01
+    pathname: T/TO/TOKUHIROM/Text-Markdown-Hoedown-1.01.tar.gz
+    provides:
+      Text::Markdown::Hoedown 1.01
+    requirements:
+      CPAN::Meta 0
+      CPAN::Meta::Prereqs 0
+      Exporter 0
+      ExtUtils::CBuilder 0
+      ExtUtils::ParseXS 3.22
+      File::pushd 0
+      Module::Build 0.38
+      parent 0
+      perl 5.008005
   Text-MultiMarkdown-1.000034
     pathname: B/BO/BOBTFISH/Text-MultiMarkdown-1.000034.tar.gz
     provides:

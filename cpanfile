@@ -10,7 +10,7 @@ requires 'Teng', '0.18';
 requires 'Text::Xslate', '2.0009';
 requires 'Time::Piece', '1.20';
 requires 'perl', '5.010_001';
-requires 'Text::MultiMarkdown';
+requires 'Text::Markdown::Hoedown';
 requires 'Digest::SHA1';
 requires 'Smart::Args';
 requires 'Protocol::WebSocket';
