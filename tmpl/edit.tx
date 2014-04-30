@@ -3,7 +3,7 @@
 : override content -> {
 
 <div class="row">
-  <button onClick="javascript:w=window.open('<: uri_for('/view',{ id => $memo.id }) :>','','scrollbars=yes,Width=1200,Height=700');w.focus();" class="btn btn-info btn-xs editable">view</button>
+  <button id="preview_request" data-url="<:  $memo.id ? uri_for('/view',{ id => $memo.id }) : uri_for('/view') :>" class="btn btn-info btn-xs">view</button>
   <span id="websocket-info-label" class="label"></span>
   : if ($memo.body) {
   <button class="btn btn-warning btn-xs editable">editable</button>
