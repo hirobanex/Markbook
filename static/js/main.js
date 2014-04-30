@@ -53,7 +53,7 @@ $(function () {
       }
   });
 
-  $('button#preview_request').click(function () {
+  $('.preview_request').click(function () {
     var target = $(this);
     w=window.open(target.attr('data-url'),'','scrollbars=yes,Width=1200,Height=700');
     w.focus();
