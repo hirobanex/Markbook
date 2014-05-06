@@ -2,6 +2,7 @@ package Markbook::Web::ViewFunctions;
 use strict;
 use warnings;
 use utf8;
+use Markbook::Util;
 use parent qw(Exporter);
 use Module::Functions;
 use File::Spec;

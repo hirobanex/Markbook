@@ -4,6 +4,7 @@ use warnings;
 use utf8;
 use parent qw(Teng);
 use Smart::Args;
+use Markbook::Util;
 
 __PACKAGE__->load_plugin('Count');
 __PACKAGE__->load_plugin('Replace');
@@ -41,8 +42,8 @@ sub insert_or_update_and_fetch_res {
     return +{
         id         => $row->id,
         title      => $row->title,
-        html       => $row->body_to_html,
-        str_cnt    => $row->body_cnt,
+        html       => Markbook::Util->to_html($row->body),
+        str_cnt    => Markbook::Util->str_cnt($row->body),
         created_at => $row->created_on->datetime,
         updated_at => $row->updated_on->datetime,
     };

@@ -5,6 +5,7 @@ use utf8;
 use Amon2::Web::Dispatcher::RouterBoom;
 use JSON::XS;
 use Encode;
+use Markbook::Util;
 
 get '/' => sub {
     my ($c) = @_;
@@ -37,7 +38,13 @@ get '/by_one_screen' => sub {
     my $row = $c->db->single('memo',{ id => $id })
         or return $c->res_404();
 
-    return $c->render('by_one_screen.tx',{ memo => $row });
+    return $c->render('by_one_screen.tx',{ 
+        memo => {
+            str_cnt => Markbook::Util->str_cnt($row->body),
+            html    => Markbook::Util->to_html($row->body),
+            %{$row->get_columns}, 
+        },
+    });
 };
 
 #一番最初にデータがインサートされていないうちにまたインサートしてしまう問題
@@ -92,7 +99,13 @@ get '/view' => sub {
     my $row = $c->db->single('memo',{ id => $id })
         or return $c->res_404();
 
-    return $c->render('view.tx',{ memo => $row });
+    return $c->render('view.tx',{ 
+        memo => {
+            str_cnt => Markbook::Util->str_cnt($row->body),
+            html    => Markbook::Util->to_html($row->body),
+            %{$row->get_columns}, 
+        },
+    });
 };
 
 get '/to_html' => sub {

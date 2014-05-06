@@ -176,7 +176,11 @@ $(function () {
       });
   }
 
-
+  $('#created_at,#updated_at').each(function(){
+    var epoch = $(this).text();
+    datetime = (new Date(epoch*1000)).strftime('%Y-%m-%dT%H:%M:%S');
+    $(this).text(datetime);
+  });
 
 });
 
