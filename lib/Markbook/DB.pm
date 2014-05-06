@@ -10,6 +10,19 @@ __PACKAGE__->load_plugin('Count');
 __PACKAGE__->load_plugin('Replace');
 __PACKAGE__->load_plugin('Pager');
 
+sub fetch_memo {
+    args my $self,
+         my $id    => 'Int';
+
+    my $row = $self->single('memo',{ id => $id }) or return;
+
+    return +{
+        str_cnt => Markbook::Util->str_cnt($row->body),
+        html    => Markbook::Util->to_html($row->body),
+        %{$row->get_columns},
+    };
+}
+
 sub insert_or_update_and_fetch_res {
     args my $self,
          my $id    => { optional => 1},

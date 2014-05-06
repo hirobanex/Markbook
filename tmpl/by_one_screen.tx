@@ -8,6 +8,8 @@
           <span class="label label-default">created:<span id="created_at"></span></span>
           <span class="label label-default">updated:<span id="updated_at"></span></span>
           <span class="label label-info" id="str_cnt">0</span>
+          <a id="to_html" href="<: $memo.id ? uri_for('/to_html',{ id => $memo.id }) : uri_for('/to_html') :>" class="btn btn-warning btn-xs" role="button">to_html</a>
+
         </p>
         <h1 id="title_preview"></h1>
         <div id="preview"></div>

@@ -3,7 +3,7 @@
 : override content -> {
 
 <div class="row">
-  <button data-url="<:  $memo.id ? uri_for('/view',{ id => $memo.id }) : uri_for('/view') :>" class="btn btn-info btn-xs preview_request">view</button>
+  <button data-url="<:  $memo.id ? uri_for('/view',{ id => $memo.id }) : uri_for('/view') :>" class="btn btn-info btn-xs preview_request popup">view</button>
   <span id="websocket-info-label" class="label"></span>
   : if ($memo.body) {
   <button class="btn btn-warning btn-xs editable">editable</button>

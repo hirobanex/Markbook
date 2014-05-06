@@ -35,16 +35,10 @@ get '/by_one_screen' => sub {
     my $id = delete $params->{id}
         or return $c->render('by_one_screen.tx');
 
-    my $row = $c->db->single('memo',{ id => $id })
+    my $memo = $c->db->fetch_memo( id => $id )
         or return $c->res_404();
 
-    return $c->render('by_one_screen.tx',{ 
-        memo => {
-            str_cnt => Markbook::Util->str_cnt($row->body),
-            html    => Markbook::Util->to_html($row->body),
-            %{$row->get_columns}, 
-        },
-    });
+    return $c->render('by_one_screen.tx',{ memo => $memo });
 };
 
 #一番最初にデータがインサートされていないうちにまたインサートしてしまう問題
@@ -84,10 +78,10 @@ get '/edit' => sub {
     my $id = $c->req->param('id')
         or return $c->render('edit.tx');
 
-    my $row = $c->db->single('memo',{ id => $id })
+    my $memo = $c->db->fetch_memo( id => $id )
         or return $c->res_404();
 
-    return $c->render('edit.tx',{ memo => $row });
+    return $c->render('edit.tx',{ memo => $memo });
 };
 
 get '/view' => sub {
@@ -96,16 +90,10 @@ get '/view' => sub {
     my $id = $c->req->param('id')
         or return $c->render('view.tx');
 
-    my $row = $c->db->single('memo',{ id => $id })
+    my $memo = $c->db->fetch_memo( id => $id )
         or return $c->res_404();
 
-    return $c->render('view.tx',{ 
-        memo => {
-            str_cnt => Markbook::Util->str_cnt($row->body),
-            html    => Markbook::Util->to_html($row->body),
-            %{$row->get_columns}, 
-        },
-    });
+    return $c->render('view.tx',{ memo => $memo, });
 };
 
 get '/to_html' => sub {
@@ -114,10 +102,10 @@ get '/to_html' => sub {
     my $id = $c->req->param('id')
         or return $c->res_404();
 
-    my $row = $c->db->single('memo',{ id => $id })
+    my $memo = $c->db->fetch_memo( id => $id )
         or return $c->res_404();
 
-    return $c->render('to_html.tx',{ memo => $row });
+    return $c->render('to_html.tx',{ memo => $memo });
 };
 
 my $clients = {};
